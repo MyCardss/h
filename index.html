@@ -36,9 +36,15 @@
         }
 
         .logo img {
-            height: 45px;
+            height: 40px;
             width: auto;
             object-fit: contain;
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -93,10 +99,14 @@
 
         .hero-image img {
             width: 100%;
-            max-width: 500px;
+            max-width: 400px;
+            height: auto;
             transform: rotate(-5deg);
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             border-radius: 15px;
+            object-fit: contain;
+            background: white;
+            padding: 20px;
         }
 
         .benefits-section {
@@ -127,8 +137,13 @@
 
         .benefit-card i {
             font-size: 2.5em;
-            color: #004a8d;
+            color: var(--primary);
             margin-bottom: 20px;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 10px;
         }
 
         .customer-care {
@@ -155,6 +170,17 @@
 
         .contact-card:hover {
             transform: translateY(-5px);
+        }
+
+        .contact-card i {
+            font-size: 2.5em;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 10px;
         }
 
         .cta-primary {
@@ -192,6 +218,16 @@
 
             .contact-info {
                 flex-direction: column;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+
+            .hero-image img {
+                max-width: 300px;
+                padding: 15px;
+                transform: rotate(0);
             }
         }
 
@@ -567,14 +603,6 @@
         }
 
         /* Animated Icons */
-        .benefit-card i, .contact-card i {
-            font-size: 2.5em;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
         .benefit-card:hover i, .contact-card:hover i {
             transform: scale(1.2) rotate(5deg);
         }
@@ -659,7 +687,7 @@
     <header>
         <div class="nav-container">
             <div class="logo">
-                <img src="hdfc-logo.png" alt="HDFC Bank">
+                <img src="https://www.hdfcbank.com/static/features/common/images/hdfc-logo.svg" alt="HDFC Bank" onerror="this.onerror=null; this.src='https://www.hdfcbank.com/static/features/common/images/hdfc-logo.png';">
             </div>
             
             <button class="hamburger">
@@ -687,7 +715,7 @@
                     <button class="cta-primary">Apply Now <i class="fas fa-arrow-right"></i></button>
                 </div>
                 <div class="hero-image">
-                    <img src="https://example.com/credit-card-image.png" alt="HDFC Premium Credit Card">
+                    <img src="https://www.hdfcbank.com/content/api/contentstream-id/723fb80a-2dde-42a3-9793-7ae1be57c87f/b4790d5e-4f98-4bf0-9709-b1063df4ef03/Personal/Pay/Cards/Credit%20Card/Millennia%20Credit%20Card/millennia-cc-banner.png" alt="HDFC Premium Credit Card" onerror="this.src='https://www.hdfcbank.com/static/features/common/images/credit-card-default.png';">
                 </div>
             </div>
         </section>

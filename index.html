@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HDFC Bank Credit Cards</title>
+    <title>HDFC Bank Credit Cards - Apply for Best Credit Cards Online</title>
+    <meta name="theme-color" content="#004a8d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,6 +17,11 @@
 
         header {
             background-color: #004a8d;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             color: white;
             padding: 10px 20px;
             display: flex;
@@ -22,8 +30,15 @@
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
+            display: flex;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
         }
 
         .nav-links {
@@ -43,58 +58,126 @@
         }
 
         .hero {
-            background-color: #f0f0f0;
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        .cta {
-            background-color: #004a8d;
+            background: linear-gradient(135deg, #004a8d 0%, #0066cc 100%);
             color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 1em;
+            padding: 80px 20px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            transform: rotate(-5deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border-radius: 15px;
+        }
+
+        .benefits-section {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .benefits-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 40px 0;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-card i {
+            font-size: 2.5em;
+            color: #004a8d;
+            margin-bottom: 20px;
         }
 
         .customer-care {
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .customer-care h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
+            padding: 80px 20px;
+            background: white;
         }
 
         .contact-info {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px 0;
         }
 
-        .contact-info div {
-            margin: 20px;
+        .contact-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cta-primary {
+            background: #00a0dc;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-primary:hover {
+            background: #0088cc;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         footer {
-            background-color: #004a8d;
-            color: white;
-            text-align: center;
-            padding: 10px 20px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            position: relative;
+            padding: 40px 20px;
         }
 
         @media (max-width: 768px) {
@@ -111,124 +194,644 @@
                 flex-direction: column;
             }
         }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            z-index: 100;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 80%;
+                max-width: 300px;
+                background: #004a8d;
+                flex-direction: column;
+                padding: 80px 20px;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+                width: 100%;
+            }
+
+            .nav-links a {
+                font-size: 1.1em;
+                width: 100%;
+                padding: 10px;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            .overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 90;
+            }
+
+            .overlay.active {
+                display: block;
+            }
+        }
+
+        /* Add margin to main content to account for fixed header */
+        main {
+            margin-top: 80px;
+        }
+
+        /* Update responsive styles */
+        @media (max-width: 768px) {
+            /* Header & Navigation */
+            .nav-container {
+                padding: 10px 15px;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 80%;
+                max-width: 300px;
+                background: #004a8d;
+                flex-direction: column;
+                padding: 80px 20px;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                margin: 0;
+            }
+
+            /* Hero Section */
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2em;
+            }
+
+            .hero-text p {
+                font-size: 1.1em;
+            }
+
+            .hero-image img {
+                transform: rotate(0);
+                margin: 0 auto;
+                display: block;
+            }
+
+            /* Benefits Section */
+            .benefits-section {
+                padding: 40px 20px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            /* Customer Care Section */
+            .customer-care {
+                padding: 40px 20px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .contact-card {
+                padding: 20px;
+            }
+
+            /* Buttons */
+            .cta-primary {
+                padding: 12px 25px;
+                width: 100%;
+                max-width: 300px;
+                margin: 10px auto;
+                display: block;
+            }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-text p {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .benefit-card h3 {
+                font-size: 1.2em;
+            }
+
+            .contact-card h3 {
+                font-size: 1.2em;
+            }
+
+            footer {
+                padding: 30px 15px;
+            }
+        }
+
+        /* Landscape mode */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .nav-links {
+                padding-top: 60px;
+                overflow-y: auto;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+        }
+
+        /* Add smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Improve touch targets */
+        @media (hover: none) and (pointer: coarse) {
+            .nav-links a,
+            .cta-primary,
+            .benefit-card,
+            .contact-card {
+                min-height: 44px;
+                padding: 12px 20px;
+            }
+        }
+
+        /* Fix footer on mobile */
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            background: #004a8d;
+            color: white;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5em;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Add these new styles and animations */
+        :root {
+            --primary: #004a8d;
+            --secondary: #00a0dc;
+            --accent: #FF6B6B;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            --hover-shadow: 0 20px 30px rgba(0,0,0,0.12);
+        }
+
+        /* Modern Card Design */
+        .benefit-card, .contact-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 30px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .benefit-card:hover, .contact-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--hover-shadow);
+        }
+
+        /* iOS-style Button */
+        .cta-primary {
+            background: var(--gradient);
+            border-radius: 16px;
+            padding: 16px 32px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transform-origin: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 5px 15px rgba(0, 160, 220, 0.3);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 160, 220, 0.4);
+        }
+
+        .cta-primary:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Modern Hero Section */
+        .hero {
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(255, 255, 255, 0.05)" d="M47.1,-57.7C61.8,-47.7,74.9,-33.5,79.7,-16.3C84.5,0.9,81,21.1,70.8,36.2C60.6,51.3,43.7,61.3,25.5,68.2C7.3,75,-12.2,78.7,-30.1,73.1C-48,67.5,-64.3,52.7,-73.3,34.3C-82.2,15.9,-83.8,-6,-76.8,-24.1C-69.8,-42.2,-54.2,-56.4,-37.8,-65.4C-21.4,-74.4,-3.3,-78.2,12.4,-74.1C28.1,-70,42.4,-58,47.1,-57.7Z" transform="translate(100 100)" /></svg>') no-repeat center center;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        /* Glassmorphism Header */
+        header {
+            background: rgba(0, 74, 141, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Modern Navigation */
+        .nav-links a {
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animated Icons */
+        .benefit-card i, .contact-card i {
+            font-size: 2.5em;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .benefit-card:hover i, .contact-card:hover i {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* Card Grid Animation */
+        .benefits-grid, .contact-info {
+            perspective: 1000px;
+        }
+
+        .benefit-card, .contact-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: cardAppear 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes cardAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animated Social Links */
+        .social-links a {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-5px) rotate(8deg);
+        }
+
+        /* Mobile Menu Animation */
+        .nav-links {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links.active {
+            transform: translateX(0);
+        }
+
+        /* Loading Animation for Images */
+        .hero-image img {
+            opacity: 0;
+            animation: imageAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes imageAppear {
+            from {
+                opacity: 0;
+                transform: translateX(30px) rotate(-5deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) rotate(-5deg);
+            }
+        }
+
+        /* Scroll Animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">HDFC BANK</div>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="hdfc-logo.png" alt="HDFC Bank">
+            </div>
+            
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <ul class="nav-links">
-                <li><a href="#">Search</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#"><i class="fas fa-credit-card"></i> Cards</a></li>
+                <li><a href="#"><i class="fas fa-search"></i> Search</a></li>
+                <li><a href="#" class="cta-primary">Login</a></li>
             </ul>
-        </nav>
+        </div>
+        <div class="overlay"></div>
     </header>
 
     <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Unlock Premium Lifestyle with HDFC Credit Cards</h1>
+                    <p>Enjoy exclusive rewards, cashback, and premium benefits with our range of credit cards tailored for you.</p>
+                    <button class="cta-primary">Apply Now <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="hero-image">
+                    <img src="https://example.com/credit-card-image.png" alt="HDFC Premium Credit Card">
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits-section scroll-reveal">
+            <h2>Why Choose HDFC Credit Cards?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-gift"></i>
+                    <h3>Reward Points</h3>
+                    <p>Earn up to 5X reward points on all your purchases</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-plane"></i>
+                    <h3>Travel Benefits</h3>
+                    <p>Complimentary airport lounge access worldwide</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Payments</h3>
+                    <p>Enhanced security with EMV chip and PIN</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-percentage"></i>
+                    <h3>Zero Annual Fee</h3>
+                    <p>Annual fee waiver on meeting spend criteria</p>
+                </div>
+            </div>
+        </section>
 
         <section class="customer-care">
-            <h2>HDFC Bank Credit Card Customer Care</h2>
-            <p>Conveniently get in touch with us for all your HDFC Bank Credit Card-related queries.</p>
+            <h2>24/7 Customer Support</h2>
+            <p>We're here to help you with all your credit card needs</p>
             <div class="contact-info">
-                <div>
+                <div class="contact-card">
+                    <i class="fas fa-arrow-up"></i>
                     <h3>Limit Increase</h3>
-                    <p>You can contact us at 1800 1600 / 1800 2600</p>
-                    <button class="cta">Apply Now</button>
+                    <p>Get instant credit limit enhancement</p>
+                    <p><i class="fas fa-phone"></i> 1800 1600 / 1800 2600</p>
+                    <button class="cta-primary">Request Now</button>
                 </div>
-                <div>
+                <div class="contact-card">
+                    <i class="fas fa-credit-card"></i>
                     <h3>Bill Payment</h3>
                     <p>You can reach out to us for your Credit Card queries on +91 22 6160 6160.</p>
-                    <button class="cta">Apply Now</button>
+                    <button class="cta-primary">Request Now</button>
                 </div>
-                <div>
+                <div class="contact-card">
+                    <i class="fas fa-key"></i>
                     <h3>Pin Generate</h3>
                     <p>You can contact us at 1800 1600 / 1800 2600</p>
-                    <button class="cta">Apply Now</button>
+                    <button class="cta-primary">Request Now</button>
                 </div>
-                <div>
+                <div class="contact-card">
+                    <i class="fas fa-ban"></i>
                     <h3>Card Block</h3>
                     <p>You can contact us at 1800 1600 / 1800 2600</p>
-                    <button class="cta">Apply Now</button>
+                    <button class="cta-primary">Request Now</button>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 HDFC Bank. All rights reserved.</p>
+        <div class="footer-content">
+            <p>&copy; 2024 HDFC Bank. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
     </footer>
 
     <script>
-        // You can add interactive JavaScript functionality here if needed
-        document.querySelector('.cta').addEventListener('click', function() {
-            alert('Thank you for referring!');
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add button click handlers
+        document.querySelectorAll('.cta-primary').forEach(button => {
+            button.addEventListener('click', function() {
+                // Add your click handling logic here
+                console.log('Button clicked');
+            });
+        });
+
+        // Add the following JavaScript at the end of your existing script section
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const overlay = document.querySelector('.overlay');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Close menu on window resize if open
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+
+        // Add scroll reveal animation
+        const scrollReveal = () => {
+            const elements = document.querySelectorAll('.scroll-reveal');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', scrollReveal);
+        window.addEventListener('load', scrollReveal);
+
+        // Add animation delay to cards
+        document.querySelectorAll('.benefit-card, .contact-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
         });
     </script>
 </body>
 </html>
-<style>
-    :root {
-        --primary-color: #004a8d;
-        --secondary-color: #f8f9fa;
-        --accent-color: #00a0dc;
-    }
-
-    body {
-        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        line-height: 1.6;
-    }
-
-    header {
-        backdrop-filter: blur(10px);
-        background: rgba(0, 74, 141, 0.95);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    .hero {
-        background: linear-gradient(135deg, var(--secondary-color) 0%, #ffffff 100%);
-        border-radius: 0 0 20px 20px;
-    }
-
-    .cta {
-        background: var(--accent-color);
-        border-radius: 25px;
-        transition: transform 0.2s;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .cta:hover {
-        transform: translateY(-2px);
-    }
-
-    .contact-info div {
-        background: var(--secondary-color);
-        border-radius: 10px;
-        padding: 2rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        transition: transform 0.3s;
-    }
-
-    .contact-info div:hover {
-        transform: translateY(-5px);
-    }
-
-    .nav-links a {
-        position: relative;
-        padding-bottom: 3px;
-    }
-
-    .nav-links a::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: white;
-        transition: width 0.3s;
-    }
-
-    .nav-links a:hover::after {
-        width: 100%;
-    }
-</style>

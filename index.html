@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HDFC Bank Credit Cards - Apply for Best Credit Cards Online</title>
     <meta name="theme-color" content="#004a8d">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,6 +13,8 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            padding-top: 60px; /* Height of fixed header */
+            overflow-x: hidden;
         }
 
         header {
@@ -146,6 +148,17 @@
             padding: 10px;
         }
 
+        .benefit-card a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover a {
+            transform: scale(1.02);
+        }
+
         .customer-care {
             padding: 80px 20px;
             background: white;
@@ -184,21 +197,33 @@
         }
 
         .cta-primary {
-            background: #00a0dc;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-size: 1.1em;
+            background: var(--gradient);
+            border-radius: 16px;
+            padding: 12px 24px;
             font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
+            letter-spacing: 0.5px;
+            transform-origin: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 5px 15px rgba(0, 160, 220, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+            width: auto;
+            min-width: 160px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
         }
 
         .cta-primary:hover {
-            background: #0088cc;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 160, 220, 0.4);
+        }
+
+        .cta-primary:active {
+            transform: translateY(0) scale(0.98);
         }
 
         footer {
@@ -228,6 +253,18 @@
                 max-width: 300px;
                 padding: 15px;
                 transform: rotate(0);
+            }
+
+            .cta-primary {
+                width: 100%;
+                max-width: 200px;
+                margin: 0 auto;
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+
+            .contact-card .cta-primary {
+                margin-top: 15px;
             }
         }
 
@@ -347,62 +384,62 @@
             }
 
             .logo img {
-                height: 35px;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 80%;
-                max-width: 300px;
-                background: #004a8d;
-                flex-direction: column;
-                padding: 80px 20px;
-                transition: right 0.3s ease;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-                margin: 0;
+                height: 32px;
             }
 
             /* Hero Section */
             .hero {
                 padding: 40px 20px;
+                margin-top: 60px; /* Add space for fixed header */
             }
 
             .hero-content {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
                 gap: 30px;
                 text-align: center;
             }
 
             .hero-text h1 {
-                font-size: 2.2em;
+                font-size: 2em;
+                line-height: 1.3;
             }
 
             .hero-text p {
                 font-size: 1.1em;
             }
 
+            .hero-text .cta-primary {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
             .hero-image img {
-                transform: rotate(0);
+                max-width: 280px;
                 margin: 0 auto;
                 display: block;
+                transform: rotate(0);
+                padding: 15px;
             }
 
             /* Benefits Section */
             .benefits-section {
-                padding: 40px 20px;
+                padding: 40px 15px;
             }
 
             .benefits-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
+                padding: 20px 0;
+            }
+
+            .benefit-card {
+                padding: 20px;
             }
 
             /* Customer Care Section */
             .customer-care {
-                padding: 40px 20px;
+                padding: 40px 15px;
             }
 
             .contact-info {
@@ -416,11 +453,40 @@
 
             /* Buttons */
             .cta-primary {
-                padding: 12px 25px;
                 width: 100%;
+                text-align: center;
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+
+            /* Navigation Menu */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 85%;
                 max-width: 300px;
-                margin: 10px auto;
-                display: block;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 80px 20px 20px;
+                transition: right 0.3s ease;
+                z-index: 99;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .nav-links a {
+                width: 100%;
+                padding: 12px 15px;
+                border-radius: 8px;
             }
         }
 
@@ -438,16 +504,27 @@
                 font-size: 1.5em;
             }
 
-            .benefit-card h3 {
-                font-size: 1.2em;
-            }
-
+            .benefit-card h3,
             .contact-card h3 {
                 font-size: 1.2em;
             }
 
+            .contact-card p {
+                font-size: 0.9em;
+            }
+
             footer {
                 padding: 30px 15px;
+            }
+
+            .social-links {
+                gap: 15px;
+            }
+
+            .cta-primary {
+                max-width: 180px;
+                padding: 10px 16px;
+                font-size: 0.9em;
             }
         }
 
@@ -459,7 +536,12 @@
             }
 
             .nav-links li {
-                margin: 10px 0;
+                margin: 5px 0;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 60px 20px;
             }
         }
 
@@ -468,7 +550,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Improve touch targets */
+        /* Fix touch targets for mobile */
         @media (hover: none) and (pointer: coarse) {
             .nav-links a,
             .cta-primary,
@@ -476,6 +558,12 @@
             .contact-card {
                 min-height: 44px;
                 padding: 12px 20px;
+            }
+
+            .benefit-card,
+            .contact-card {
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
             }
         }
 
@@ -514,18 +602,23 @@
 
         /* Add these new styles and animations */
         :root {
-            --primary: #004a8d;
-            --secondary: #00a0dc;
+            --primary: #0066ff;
+            --secondary: #00c6ff;
             --accent: #FF6B6B;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --info: #2196F3;
             --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             --card-shadow: 0 10px 20px rgba(0,0,0,0.08);
             --hover-shadow: 0 20px 30px rgba(0,0,0,0.12);
+            --glass-bg: rgba(255, 255, 255, 0.95);
         }
 
         /* Modern Card Design */
         .benefit-card, .contact-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 24px;
             padding: 30px;
@@ -535,27 +628,6 @@
         .benefit-card:hover, .contact-card:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: var(--hover-shadow);
-        }
-
-        /* iOS-style Button */
-        .cta-primary {
-            background: var(--gradient);
-            border-radius: 16px;
-            padding: 16px 32px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transform-origin: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 5px 15px rgba(0, 160, 220, 0.3);
-        }
-
-        .cta-primary:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 160, 220, 0.4);
-        }
-
-        .cta-primary:active {
-            transform: translateY(0) scale(0.98);
         }
 
         /* Modern Hero Section */
@@ -568,12 +640,9 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(255, 255, 255, 0.05)" d="M47.1,-57.7C61.8,-47.7,74.9,-33.5,79.7,-16.3C84.5,0.9,81,21.1,70.8,36.2C60.6,51.3,43.7,61.3,25.5,68.2C7.3,75,-12.2,78.7,-30.1,73.1C-48,67.5,-64.3,52.7,-73.3,34.3C-82.2,15.9,-83.8,-6,-76.8,-24.1C-69.8,-42.2,-54.2,-56.4,-37.8,-65.4C-21.4,-74.4,-3.3,-78.2,12.4,-74.1C28.1,-70,42.4,-58,47.1,-57.7Z" transform="translate(100 100)" /></svg>') no-repeat center center;
-            opacity: 0.1;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='rgba(255, 255, 255, 0.05)' d='M47.1,-57.7C61.8,-47.7,74.9,-33.5,79.7,-16.3C84.5,0.9,81,21.1,70.8,36.2C60.6,51.3,43.7,61.3,25.5,68.2C7.3,75,-12.2,78.7,-30.1,73.1C-48,67.5,-64.3,52.7,-73.3,34.3C-82.2,15.9,-83.8,-6,-76.8,-24.1C-69.8,-42.2,-54.2,-56.4,-37.8,-65.4C-21.4,-74.4,-3.3,-78.2,12.4,-74.1C28.1,-70,42.4,-58,47.1,-57.7Z' transform='translate(100 100)'/%3E%3C/svg%3E") no-repeat center center;
             animation: float 20s infinite linear;
         }
 
@@ -585,9 +654,10 @@
 
         /* Glassmorphism Header */
         header {
-            background: rgba(0, 74, 141, 0.8);
+            background: rgba(0, 102, 255, 0.85);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Modern Navigation */
@@ -628,19 +698,21 @@
         /* Animated Social Links */
         .social-links a {
             position: relative;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .social-links a:hover {
             background: var(--secondary);
             transform: translateY(-5px) rotate(8deg);
+            border-color: transparent;
         }
 
         /* Mobile Menu Animation */
@@ -680,6 +752,15 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Improve button accessibility */
+        .cta-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -712,7 +793,7 @@
                 <div class="hero-text">
                     <h1>Unlock Premium Lifestyle with HDFC Credit Cards</h1>
                     <p>Enjoy exclusive rewards, cashback, and premium benefits with our range of credit cards tailored for you.</p>
-                    <button class="cta-primary">Apply Now <i class="fas fa-arrow-right"></i></button>
+                    <a href="https://www.hdfcbank.com/personal/pay/cards/credit-cards/apply" class="cta-primary">Apply Now <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="hero-image">
                     <img src="https://www.hdfcbank.com/content/api/contentstream-id/723fb80a-2dde-42a3-9793-7ae1be57c87f/b4790d5e-4f98-4bf0-9709-b1063df4ef03/Personal/Pay/Cards/Credit%20Card/Millennia%20Credit%20Card/millennia-cc-banner.png" alt="HDFC Premium Credit Card" onerror="this.src='https://www.hdfcbank.com/static/features/common/images/credit-card-default.png';">
@@ -724,29 +805,37 @@
             <h2>Why Choose HDFC Credit Cards?</h2>
             <div class="benefits-grid">
                 <div class="benefit-card">
-                    <i class="fas fa-gift"></i>
-                    <h3>Reward Points</h3>
-                    <p>Earn up to 5X reward points on all your purchases</p>
+                    <a href="https://wa.link/ccllwf" style="text-decoration: none; color: inherit;">
+                        <i class="fas fa-gift"></i>
+                        <h3>Reward Points</h3>
+                        <p>Earn up to 5X reward points on all your purchases</p>
+                    </a>
                 </div>
                 <div class="benefit-card">
+                <a href="https://wa.link/ccllwf" style="text-decoration: none; color: inherit;">
                     <i class="fas fa-plane"></i>
                     <h3>Travel Benefits</h3>
                     <p>Complimentary airport lounge access worldwide</p>
+                    </a>
                 </div>
                 <div class="benefit-card">
+                <a href="https://wa.link/ccllwf" style="text-decoration: none; color: inherit;">
                     <i class="fas fa-shield-alt"></i>
                     <h3>Secure Payments</h3>
                     <p>Enhanced security with EMV chip and PIN</p>
+                    </a>
                 </div>
                 <div class="benefit-card">
+                <a href="https://wa.link/ccllwf" style="text-decoration: none; color: inherit;">
                     <i class="fas fa-percentage"></i>
                     <h3>Zero Annual Fee</h3>
                     <p>Annual fee waiver on meeting spend criteria</p>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <section class="customer-care">
+        <section class="customer-care scroll-reveal">
             <h2>24/7 Customer Support</h2>
             <p>We're here to help you with all your credit card needs</p>
             <div class="contact-info">
@@ -755,25 +844,31 @@
                     <h3>Limit Increase</h3>
                     <p>Get instant credit limit enhancement</p>
                     <p><i class="fas fa-phone"></i> 1800 1600 / 1800 2600</p>
-                    <button class="cta-primary">Request Now</button>
+                    <a href="https://wa.link/ccllwf" class="cta-primary">Request Now</a>
                 </div>
                 <div class="contact-card">
                     <i class="fas fa-credit-card"></i>
                     <h3>Bill Payment</h3>
                     <p>You can reach out to us for your Credit Card queries on +91 22 6160 6160.</p>
-                    <button class="cta-primary">Request Now</button>
+                    <a href="https://wa.link/ccllwf" class="cta-primary">Request Now</a>
                 </div>
                 <div class="contact-card">
                     <i class="fas fa-key"></i>
                     <h3>Pin Generate</h3>
                     <p>You can contact us at 1800 1600 / 1800 2600</p>
-                    <button class="cta-primary">Request Now</button>
+                    <a href="https://wa.link/ccllwf" class="cta-primary">Request Now</a>
                 </div>
                 <div class="contact-card">
                     <i class="fas fa-ban"></i>
                     <h3>Card Block</h3>
                     <p>You can contact us at 1800 1600 / 1800 2600</p>
-                    <button class="cta-primary">Request Now</button>
+                    <a href="https://wa.link/ccllwf" class="cta-primary">Request Now</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-ban"></i>
+                    <h3>Card Statement</h3>
+                    <p>You can contact us at 1800 1600 / 1800 2600</p>
+                    <a href="https://wa.link/ccllwf" class="cta-primary">Request Now</a>
                 </div>
             </div>
         </section>
